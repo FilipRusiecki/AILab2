@@ -1,0 +1,8 @@
+﻿  Game.cpp
+C:\Users\gameuser\Desktop\asa\AILab1\AILab1\Game.cpp(61,70): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\gameuser\Desktop\asa\AILab1\AILab1\Game.cpp(67,111): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+  main.cpp
+  npc.cpp
+  Player.cpp
+  Generating Code...
+  AILab1.vcxproj -> C:\Users\gameuser\Desktop\asa\AILab1\Debug\AILab1.exe
