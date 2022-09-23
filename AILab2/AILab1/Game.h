@@ -3,6 +3,7 @@
 #define GAME_HPP
 #include "Player.h"
 #include "npc.h"
+#include "Alien.h"
 #include <SFML/Graphics.hpp>
 
 class Game
@@ -13,6 +14,7 @@ public:
 	void run();
 	Player myPlayer;
 	npc myNpc;
+	Alien myAlien;
 	void checkForOffScreen();
 private:
 	float playerOffScreenOffsetX;

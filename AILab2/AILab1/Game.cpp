@@ -1,9 +1,3 @@
-/// <summary>
-/// @author Peter Lowe
-/// @date May 2019
-///
-/// you need to change the above lines or lose marks
-/// </summary>
 
 #include "Game.h"
 #include <iostream>
@@ -73,7 +67,6 @@ void Game::checkForOffScreen()
 		myPlayer.m_playerSprite.setPosition(myPlayer.m_playerSprite.getPosition().x, 0 - playerOffScreenOffsetY);
 	}
 
-
 	//npc moving top of screen 
 	if (myNpc.m_npcSprite.getPosition().y > sf::VideoMode::getDesktopMode().height)
 	{
@@ -119,7 +112,7 @@ void Game::update(sf::Time t_deltaTime)
 	checkForOffScreen();
 	myPlayer.update();
 	myNpc.update();
-
+	myAlien.update();
 
 
 
@@ -131,6 +124,7 @@ void Game::render()
 	m_window.clear(sf::Color::Black);
 	myNpc.reder(m_window);
 	myPlayer.reder(m_window);
+	myAlien.render(m_window);
 	m_window.display();
 }
 

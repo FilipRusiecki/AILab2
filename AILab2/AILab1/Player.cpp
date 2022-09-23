@@ -25,7 +25,7 @@ void Player::setupSprites()
 {
 	if (!m_playerTexture.loadFromFile("ASSETS\\IMAGES\\playerShip.png"))
 	{
-		// simple error message if previous call fails
+	
 		std::cout << "problem loading player" << std::endl;
 	}
 	turnRight = true;
@@ -55,31 +55,6 @@ void Player::playerMovement()
 		speedX++;
 		changeDirection();
 	}
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	//{
-	//	speedY--;
-	//}
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	//{
-	//	speedY++;
-	//}
-
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	//{
-	//	m_playerSprite.move(-10.0f, 0.0f);
-	//}
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	//{
-	//	m_playerSprite.move(10.0f, 0.0f);
-	//}
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	//{
-	//	m_playerSprite.move(0.0f, 10.0f);
-	//}
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	//{
-	//	m_playerSprite.move(0.0f, -10.0f);
-	//}
 }
 
 void Player::reder(sf::RenderWindow& t_window)
