@@ -4,6 +4,8 @@
 #include "Player.h"
 #include "npc.h"
 #include "Alien.h"
+#include "Arrive.h"
+#include "Seek.h"
 #include <SFML/Graphics.hpp>
 
 class Game
@@ -15,8 +17,13 @@ public:
 	Player myPlayer;
 	npc myNpc;
 	Alien myAlien;
+	Arrive myArrive;
+	Seek mySeek;
 	void checkForOffScreen();
 private:
+	int npcCount= 3; 
+	sf::Text nameTag[3];
+	sf::Font m_font;
 	float playerOffScreenOffsetX;
 	float playerOffScreenOffsetY;
 	void processEvents();
@@ -25,10 +32,7 @@ private:
 	void render();
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
-
-
 	bool m_exitGame; // control exiting game
-
 };
 
 #endif // !GAME_HPP

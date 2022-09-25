@@ -12,8 +12,16 @@ void npc::setupSprites()
 		std::cout << "problem loading npc" << std::endl;
 	}
 	m_npcSprite.setTexture(m_npcTexture);
-	m_npcSprite.setPosition(1800.0f, 1800.0f);
-	m_npcSprite.scale(5.0f, 5.0f);
+	//college pc
+	//m_npcSprite.setPosition(1800.0f, 1800.0f);
+	//m_npcSprite.scale(5.0f, 5.0f);
+
+
+
+	//my pc
+	m_npcSprite.setPosition(1500.0f, 1500.0f);
+	m_npcSprite.scale(3.0f, 3.0f);
+	m_npcSprite.setOrigin(16.0f, 16.0f);
 	m_npcSprite.rotate(180);
 }
 

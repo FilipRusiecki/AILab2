@@ -11,7 +11,24 @@ Game::Game() :
 {
 	playerOffScreenOffsetX = myPlayer.m_playerSprite.getGlobalBounds().width;
 	playerOffScreenOffsetY = myPlayer.m_playerSprite.getGlobalBounds().height;
+	if (!m_font.loadFromFile("ASSETS\\FONTS\\ariblk.ttf"))
+	{
+		std::cout << "problem loading font" << std::endl;
 
+	}
+	for (size_t i = 0; i < npcCount; i++)
+	{
+		nameTag[i].setFont(m_font);
+		nameTag[i].setScale(0.5f, 0.5f);
+	}
+
+	nameTag[0].setString("Wander");
+	nameTag[1].setString("NPC");
+	nameTag[2].setString("Seek");
+
+
+	//line[1].position = sf::Vector2f(20, 0);
+	//line[1].color = sf::Color::Red;
 }
 
 
@@ -27,6 +44,7 @@ void Game::run()
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	const float fps{ 60.0f };
 	sf::Time timePerFrame = sf::seconds(1.0f / fps); // 60 fps
+
 	while (m_window.isOpen())
 	{
 		processEvents(); // as many as possible
@@ -36,6 +54,7 @@ void Game::run()
 			timeSinceLastUpdate -= timePerFrame;
 			processEvents(); // at least 60 fps
 			update(timePerFrame); //60 fps
+
 		}
 		render(); // as many as possible
 	}
@@ -72,6 +91,35 @@ void Game::checkForOffScreen()
 	{
 		myNpc.m_npcSprite.setPosition(myNpc.m_npcSprite.getPosition().x, 0 - playerOffScreenOffsetY);
 	}
+
+
+
+
+	//aline moving off screen
+	//aline moving left off screen
+	if (myAlien.m_alienSprite.getPosition().x > sf::VideoMode::getDesktopMode().width)
+	{
+		myAlien.m_alienSprite.setPosition(0 - playerOffScreenOffsetX, myAlien.m_alienSprite.getPosition().y);
+	}
+
+	//aline moving right of screen 
+	if (myAlien.m_alienSprite.getPosition().x < 0 - playerOffScreenOffsetX)
+	{
+		myAlien.m_alienSprite.setPosition(sf::VideoMode::getDesktopMode().width, myAlien.m_alienSprite.getPosition().y);
+	}
+
+	//aline moving top of screen 
+	if (myAlien.m_alienSprite.getPosition().y < 0 - playerOffScreenOffsetY)
+	{
+		myAlien.m_alienSprite.setPosition(myAlien.m_alienSprite.getPosition().x, sf::VideoMode::getDesktopMode().height);
+	}
+
+	//aline rmoving bottom of screen 
+	if (myAlien.m_alienSprite.getPosition().y > sf::VideoMode::getDesktopMode().height)
+	{
+		myAlien.m_alienSprite.setPosition(myAlien.m_alienSprite.getPosition().x, 0 - playerOffScreenOffsetY);
+	}
+
 
 }
 
@@ -110,10 +158,16 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.close();
 	}
 	checkForOffScreen();
-	myPlayer.update();
+	myPlayer.update(t_deltaTime);
 	myNpc.update();
-	myAlien.update();
+	myAlien.update(t_deltaTime);
+	myArrive.update(t_deltaTime,myPlayer);
+	mySeek.update(t_deltaTime, myPlayer);
 
+
+	nameTag[0].setPosition(myAlien.m_alienSprite.getPosition());
+	nameTag[1].setPosition(myNpc.m_npcSprite.getPosition());
+	nameTag[2].setPosition(mySeek.m_seekSprite.getPosition());
 
 
 }
@@ -125,6 +179,14 @@ void Game::render()
 	myNpc.reder(m_window);
 	myPlayer.reder(m_window);
 	myAlien.render(m_window);
+	//myArrive.render(m_window);
+	mySeek.render(m_window);
+
+	for (size_t i = 0; i < npcCount; i++)
+	{
+		m_window.draw(nameTag[i]);
+
+	}
 	m_window.display();
 }
 
