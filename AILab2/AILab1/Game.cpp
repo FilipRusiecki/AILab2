@@ -86,6 +86,10 @@ void Game::checkForOffScreen()
 		myPlayer.m_playerSprite.setPosition(myPlayer.m_playerSprite.getPosition().x, 0 - playerOffScreenOffsetY);
 	}
 
+
+
+
+
 	//npc moving top of screen 
 	if (myNpc.m_npcSprite.getPosition().y > sf::VideoMode::getDesktopMode().height)
 	{
