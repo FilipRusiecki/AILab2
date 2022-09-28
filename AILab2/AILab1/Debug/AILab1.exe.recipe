@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>E:\AILab2\AILab2\Debug\AILab1.exe</FullPath>
+      <FullPath>C:\Users\gameuser\Desktop\AILab2\AILab2\Debug\AILab1.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>E:\AILab2\AILab2\AILab1\ASSETS\FONTS\ariblk.ttf</FullPath>
+      <FullPath>C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\ASSETS\FONTS\ariblk.ttf</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>E:\AILab2\AILab2\AILab1\ASSETS\IMAGES\SFML-LOGO.png</FullPath>
+      <FullPath>C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\ASSETS\IMAGES\SFML-LOGO.png</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

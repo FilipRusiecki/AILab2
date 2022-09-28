@@ -1,6 +1,6 @@
 ﻿  Player.cpp
-E:\AILab2\AILab2\AILab1\Player.cpp(68,16): warning C4305: '+=': truncation from 'double' to 'float'
-E:\AILab2\AILab2\AILab1\Player.cpp(75,16): warning C4305: '-=': truncation from 'double' to 'float'
-E:\AILab2\AILab2\AILab1\Player.cpp(95,19): warning C4305: '-=': truncation from 'double' to 'float'
-E:\AILab2\AILab2\AILab1\Player.cpp(104,19): warning C4305: '+=': truncation from 'double' to 'float'
-  AILab1.vcxproj -> E:\AILab2\AILab2\Debug\AILab1.exe
+C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\Player.cpp(68,16): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\Player.cpp(75,16): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\Player.cpp(95,19): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\Player.cpp(104,19): warning C4305: '+=': truncation from 'double' to 'float'
+  AILab1.vcxproj -> C:\Users\gameuser\Desktop\AILab2\AILab2\Debug\AILab1.exe
