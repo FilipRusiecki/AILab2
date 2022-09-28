@@ -7,12 +7,16 @@ class Alien
 public:
 	sf::Texture m_alienTexture; // texture used for alien
 	sf::Sprite m_alienSprite; // sprite used for alien
-
+	sf::CircleShape radius;
+	float radiusF = 100.0f;
 	void update(sf::Time& t_deltaTime);
 	void render(sf::RenderWindow& t_window);
+	sf::VertexArray WanderLine{ sf::Lines };
+	sf::Vector2f linePoint;
 	Alien();
 	void kinematicWander(sf::Time& t_deltaTime);
 private:
+	float angleInRads = 0;
 	float angle = 0.0f;
 	float pi = 3.141592653589793238f;
 	sf::Vector2f vel;

@@ -11,12 +11,19 @@ void Alien::update(sf::Time& t_deltaTime)
 {
 	randomNum();
 	kinematicWander(t_deltaTime);
-	
+	WanderLine.clear();
+	sf::Vertex begin{ m_alienSprite.getPosition(),sf::Color::Yellow };
+	WanderLine.append(begin);
+	sf::Vertex end{ linePoint, sf::Color::Yellow };
+	WanderLine.append(end);
 }
 
 void Alien::render(sf::RenderWindow& t_window)
 {
+	t_window.draw(WanderLine);
 	t_window.draw(m_alienSprite);
+	//t_window.draw(radius);
+
 }
 
 void Alien::randomNum()
@@ -43,6 +50,9 @@ void Alien::setupSprites()
 	m_alienSprite.setOrigin(16.0f, 16.0f);
 	m_alienSprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
 
+	radius.setFillColor(sf::Color{ 107, 217, 231, 70 });
+	radius.setRadius(radiusF);
+	radius.setPosition(m_alienSprite.getPosition().x - radiusF, m_alienSprite.getPosition().y - radiusF);
 }
 
 void Alien::kinematicWander(sf::Time& t_deltaTime)
@@ -59,6 +69,9 @@ void Alien::kinematicWander(sf::Time& t_deltaTime)
 	{
 		angle = 359.0;
 	}
+	angleInRads = (angle - 90) * pi / 180;
+	linePoint.x = m_alienSprite.getPosition().x + radiusF * cos(angleInRads);
+	linePoint.y = m_alienSprite.getPosition().y + radiusF * sin(angleInRads);
 
 	std::cout << "Alien angle: " << angle << std::endl;
 	vel.x = speed * sin(angle * t_deltaTime.asMilliseconds() / 1000);
@@ -67,6 +80,7 @@ void Alien::kinematicWander(sf::Time& t_deltaTime)
 	sf::Vector2f normalisedVelocity = vel / squareAns;
 	m_alienSprite.move(vel);
 	m_alienSprite.setRotation(angle);
+	radius.move(vel);
 }
 
 

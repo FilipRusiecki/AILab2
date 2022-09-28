@@ -4,22 +4,7 @@ Player::Player()
 	setupSprites();
 }
 
-void Player::changeDirection()
-{
-	if (speedX > 0 && turnRight == false)
-	{
-		m_playerSprite.setRotation(90);
-		turnRight = true;
-		turnLeft = false;
-	}
-	if (speedX < 0 && turnLeft == false)
-	{
-		m_playerSprite.setRotation(-90);
-		turnRight = false;
-		turnLeft = true;
-	}
 
-}
 
 void Player::setupSprites()
 {
@@ -30,7 +15,7 @@ void Player::setupSprites()
 	}
 	turnRight = true;
 	m_playerSprite.setTexture(m_playerTexture);
-	speedX = 1;
+	
 	//college pc
 	//m_playerSprite.setPosition(1800.0f, 1800.0f);
 	//m_playerSprite.scale(5.0f, 5.0f);
@@ -41,8 +26,8 @@ void Player::setupSprites()
 	m_playerSprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
 	m_playerSprite.setOrigin(16.0f, 16.0f);
 	//m_playerSprite.setRotation(90);
-	linePoint.setRadius(2.0f);
-	linePoint.setPosition(m_playerSprite.getPosition().x + 100.0f, m_playerSprite.getPosition().y);
+	
+	//linePoint.x = { m_playerSprite.getPosition().x + 100.0f };
 
 	radius.setFillColor(sf::Color{ 107, 217, 231, 70 });
 	radius.setRadius(radiusF);
@@ -78,17 +63,36 @@ void Player::playerMovement(sf::Time& t_deltaTime)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		speed += 0.4;
+		if (speed < maxSpeedFront)
+		{
+			speed += 0.4;
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		speed-=0.4 ; 
+		if (speed > maxSpeedReverse)
+		{
+			speed -= 0.4;
+		}
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+	{
+		speed = 0.0f;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::K))
+	{
+		speed = 2.0f;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::J))
+	{
+		speed = 5.0f;
+	}
+
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		rotation = m_playerSprite.getRotation();
-		rotation -= 0.8 ;
+		rotation -= 1.8 ;
 		if (rotation == 0.0)
 		{
 			rotation = 359.0;
@@ -97,7 +101,7 @@ void Player::playerMovement(sf::Time& t_deltaTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		rotation = m_playerSprite.getRotation();
-		rotation += 0.8 ;
+		rotation += 1.8 ;
 		
 		if (rotation == 360.0)
 		{
@@ -106,11 +110,16 @@ void Player::playerMovement(sf::Time& t_deltaTime)
 	}
 	vel.x = speed * sin(m_playerSprite.getRotation() * t_deltaTime.asMilliseconds() / 1000);
 	vel.y = speed * -cos(m_playerSprite.getRotation() * t_deltaTime.asMilliseconds() / 1000);
+	angleInRads = (rotation - 90) * pi / 180;
+	linePoint.x = m_playerSprite.getPosition().x + radiusF * cos(angleInRads);
+	linePoint.y = m_playerSprite.getPosition().y + radiusF * sin(angleInRads);
 
 	m_playerSprite.move(vel);
-	linePoint.move(vel);
-	radius.move(vel);
-	radiusSmaller.move(vel);
+	//linePoint.move(vel);
+	radius.setPosition(m_playerSprite.getPosition().x - radiusF, m_playerSprite.getPosition().y - radiusF);
+	radiusSmaller.setPosition(m_playerSprite.getPosition().x - radiusFSmall, m_playerSprite.getPosition().y - radiusFSmall);
+	//radius.move(vel);
+	//radiusSmaller.move(vel);
 	m_playerSprite.setRotation(rotation);
 
 	std::cout << "							player angle: " << rotation << std::endl;
@@ -137,6 +146,6 @@ void Player::update(sf::Time& t_deltaTime)
 	playerLine.clear();
 	sf::Vertex begin{m_playerSprite.getPosition(),sf::Color::Cyan };
 	playerLine.append(begin);
-	sf::Vertex end{linePoint.getPosition(), sf::Color::Cyan };
+	sf::Vertex end{linePoint, sf::Color::Cyan };
 	playerLine.append(end);
 }

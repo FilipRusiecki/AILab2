@@ -23,6 +23,7 @@ public:
 private:
 	int npcCount= 3; 
 	sf::Text nameTag[3];
+	sf::Text info;
 	sf::Font m_font;
 	float playerOffScreenOffsetX;
 	float playerOffScreenOffsetY;
