@@ -6,6 +6,7 @@
 #include "Alien.h"
 #include "Arrive.h"
 #include "Seek.h"
+#include "Flee.h"
 #include <SFML/Graphics.hpp>
 
 class Game
@@ -19,10 +20,11 @@ public:
 	Alien myAlien;
 	Arrive myArrive;
 	Seek mySeek;
+	Flee myFlee;
 	void checkForOffScreen();
 private:
-	int npcCount= 3; 
-	sf::Text nameTag[3];
+	int npcCount= 4; 
+	sf::Text nameTag[4];
 	sf::Text info;
 	sf::Font m_font;
 	float playerOffScreenOffsetX;

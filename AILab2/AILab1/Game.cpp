@@ -25,6 +25,8 @@ Game::Game() :
 	nameTag[0].setString("Wander");
 	nameTag[1].setString("NPC");
 	nameTag[2].setString("Seek");
+	nameTag[3].setString("flee");
+
 
 
 	//line[1].position = sf::Vector2f(20, 0);
@@ -167,12 +169,12 @@ void Game::update(sf::Time t_deltaTime)
 	myAlien.update(t_deltaTime);
 	myArrive.update(t_deltaTime,myPlayer);
 	mySeek.update(t_deltaTime, myPlayer);
-
+	myFlee.update(t_deltaTime, myPlayer);
 
 	nameTag[0].setPosition(myAlien.m_alienSprite.getPosition());
 	nameTag[1].setPosition(myNpc.m_npcSprite.getPosition());
 	nameTag[2].setPosition(mySeek.m_seekSprite.getPosition());
-
+	nameTag[3].setPosition(myFlee.m_fleeSprite.getPosition());
 
 }
 
@@ -183,6 +185,7 @@ void Game::render()
 	myNpc.reder(m_window);
 	myPlayer.reder(m_window);
 	myAlien.render(m_window);
+	myFlee.render(m_window);
 	//myArrive.render(m_window);
 	mySeek.render(m_window);
 
