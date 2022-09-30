@@ -17,6 +17,8 @@ public:
 	bool alive = false;
 	bool tracerAlive = false;
 private:
+	sf::Font m_font;
+	sf::Text nameTag;
 	void kinematicWander(sf::Time& t_deltaTime);
 	int Offset = 16;
 	float angleInRads = 0;

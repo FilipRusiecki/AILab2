@@ -19,6 +19,7 @@ void Alien::update(sf::Time& t_deltaTime)
 		WanderLine.append(begin);
 		sf::Vertex end{ linePoint, sf::Color::Yellow };
 		WanderLine.append(end);
+		nameTag.setPosition(m_alienSprite.getPosition());
 	}
 }
 
@@ -31,6 +32,8 @@ void Alien::render(sf::RenderWindow& t_window)
 			t_window.draw(WanderLine);
 		}
 		t_window.draw(m_alienSprite);
+		t_window.draw(nameTag);
+
 		//t_window.draw(radius);
 	}
 }
@@ -76,6 +79,10 @@ void Alien::setupSprites()
 		// simple error message if previous call fails
 		std::cout << "problem loading npc" << std::endl;
 	}
+	if (!m_font.loadFromFile("ASSETS\\FONTS\\ariblk.ttf"))
+	{
+		std::cout << "problem loading font" << std::endl;
+	}
 	m_alienSprite.setTexture(m_alienTexture);
 	//college pc 
 	//m_alienSprite.setPosition(500.0f, 500.0f);
@@ -90,6 +97,10 @@ void Alien::setupSprites()
 	radius.setFillColor(sf::Color{ 107, 217, 231, 70 });
 	radius.setRadius(radiusF);
 	radius.setPosition(m_alienSprite.getPosition().x - radiusF, m_alienSprite.getPosition().y - radiusF);
+
+	nameTag.setFont(m_font);
+	nameTag.setScale(0.5f, 0.5f);
+	nameTag.setString("Wander");
 }
 
 void Alien::kinematicWander(sf::Time& t_deltaTime)

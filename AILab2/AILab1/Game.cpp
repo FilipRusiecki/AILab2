@@ -13,19 +13,10 @@ Game::Game() :
 		std::cout << "problem loading font" << std::endl;
 
 	}
-	for (size_t i = 0; i < npcCount; i++)
-	{
-		nameTag[i].setFont(m_font);
-		nameTag[i].setScale(0.5f, 0.5f);
-	}
 	info.setFont(m_font);
 	info.setScale(1.0f, 1.0f);
 	info.setString("Press 1: NPC , 2:Wander , 3:Seek/Arrive , 4: Flee , 5:TracerLines\n L: player speed = 0, K: player speed = 2, J: player speed = 5");
 	info.setPosition(10.0f, 10.0f);
-	nameTag[0].setString("Wander");
-	nameTag[1].setString("NPC");
-	nameTag[2].setString("Seek");
-	nameTag[3].setString("flee");
 }
 
 
@@ -71,6 +62,7 @@ void Game::processEvents()
 		}
 	}
 }
+
 void Game::processKeys(sf::Event t_event)
 {
 	if (sf::Keyboard::Escape == t_event.key.code)
@@ -112,12 +104,6 @@ void Game::update(sf::Time t_deltaTime)
 	myAlien.update(t_deltaTime);
 	mySeek.update(t_deltaTime, myPlayer);
 	myFlee.update(t_deltaTime, myPlayer);
-
-	nameTag[0].setPosition(myAlien.m_alienSprite.getPosition());
-	nameTag[1].setPosition(myNpc.m_npcSprite.getPosition());
-	nameTag[2].setPosition(mySeek.m_seekSprite.getPosition());
-	nameTag[3].setPosition(myFlee.m_fleeSprite.getPosition());
-
 }
 
 
@@ -128,11 +114,7 @@ void Game::render()
 	myPlayer.reder(m_window);
 	myAlien.render(m_window);
 	myFlee.render(m_window);
-	mySeek.render(m_window);
-	for (size_t i = 0; i < npcCount; i++)
-	{
-		m_window.draw(nameTag[i]);
-	}
+	mySeek.render(m_window); 
 	m_window.draw(info);
 	m_window.display();
 }

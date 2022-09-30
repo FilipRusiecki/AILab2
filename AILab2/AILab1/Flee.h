@@ -16,6 +16,8 @@ public:
 	bool alive = false;
 	bool tracerAlive = false;
 private:
+	sf::Font m_font;
+	sf::Text nameTag;
 	float angle = 0.0f;
 	float pi = 3.141592653589793238f;
 	float speed = 2.0f;

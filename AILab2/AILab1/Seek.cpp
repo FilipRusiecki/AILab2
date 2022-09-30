@@ -11,6 +11,7 @@ void Seek::update(sf::Time& t_deltaTime, Player& t_player)
 	if (alive == true)
 	{
 		seek(t_deltaTime, t_player);
+		nameTag.setPosition(m_seekSprite.getPosition());
 	}
 }
 
@@ -23,6 +24,7 @@ void Seek::render(sf::RenderWindow& t_window)
 			t_window.draw(LineToPlayer);
 		}
 		t_window.draw(m_seekSprite);
+		t_window.draw(nameTag);
 	}
 }
 
@@ -35,6 +37,10 @@ void Seek::setupSprites()
 		// simple error message if previous call fails
 		std::cout << "problem loading npc" << std::endl;
 	}
+	if (!m_font.loadFromFile("ASSETS\\FONTS\\ariblk.ttf"))
+	{
+		std::cout << "problem loading font" << std::endl;
+	}
 	m_seekSprite.setTexture(m_seekTexture);
 	//college pc 
 	//m_m_seekSpriteSprite.setPosition(1200.0f, 500.0f);
@@ -46,6 +52,9 @@ void Seek::setupSprites()
 	m_seekSprite.setOrigin(16.0f, 16.0f);
 	m_seekSprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
 
+	nameTag.setFont(m_font);
+	nameTag.setScale(0.5f, 0.5f);
+	nameTag.setString("Seek");
 }
 
 void Seek::seek(sf::Time& t_deltaTime, Player& t_player)

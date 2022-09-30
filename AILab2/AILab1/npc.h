@@ -12,6 +12,8 @@ public:
 	void reder(sf::RenderWindow& t_window);
 	bool alive = false;
 private:
+	sf::Font m_font;
+	sf::Text nameTag;
 	void setupSprites();
 	void npcMovement();
 	void boundry();

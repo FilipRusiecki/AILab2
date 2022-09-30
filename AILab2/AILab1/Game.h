@@ -21,8 +21,6 @@ public:
 	Seek mySeek;
 	Flee myFlee;
 private:
-	int npcCount= 4; 
-	sf::Text nameTag[4];
 	sf::Text info;
 	sf::Font m_font;
 	float playerOffScreenOffsetX;
