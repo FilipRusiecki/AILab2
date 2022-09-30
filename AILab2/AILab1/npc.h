@@ -10,10 +10,10 @@ public:
 	npc();
 	void update();
 	void reder(sf::RenderWindow& t_window);
-
+	bool alive = false;
 private:
 	void setupSprites();
 	void npcMovement();
-
+	void boundry();
 };
 

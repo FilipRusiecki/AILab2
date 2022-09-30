@@ -9,27 +9,64 @@ Alien::Alien()
 
 void Alien::update(sf::Time& t_deltaTime)
 {
-	randomNum();
-	kinematicWander(t_deltaTime);
-	WanderLine.clear();
-	sf::Vertex begin{ m_alienSprite.getPosition(),sf::Color::Yellow };
-	WanderLine.append(begin);
-	sf::Vertex end{ linePoint, sf::Color::Yellow };
-	WanderLine.append(end);
+	if (alive == true)
+	{
+		randomNum();
+		boundry();
+		kinematicWander(t_deltaTime);
+		WanderLine.clear();
+		sf::Vertex begin{ m_alienSprite.getPosition(),sf::Color::Yellow };
+		WanderLine.append(begin);
+		sf::Vertex end{ linePoint, sf::Color::Yellow };
+		WanderLine.append(end);
+	}
 }
 
 void Alien::render(sf::RenderWindow& t_window)
 {
-	t_window.draw(WanderLine);
-	t_window.draw(m_alienSprite);
-	//t_window.draw(radius);
-
+	if (alive == true)
+	{
+		if (tracerAlive == true)
+		{
+			t_window.draw(WanderLine);
+		}
+		t_window.draw(m_alienSprite);
+		//t_window.draw(radius);
+	}
 }
 
 void Alien::randomNum()
 {						//max min +1 + min
 	randomInt = rand() % (10 +10 +1) + -10; //random number between -1 to 1 ;
 	std::cout << "Alien rotate offset: " << randomInt << std::endl;
+}
+
+void Alien::boundry()
+{
+
+	//aline moving left off screen
+	if (m_alienSprite.getPosition().x > sf::VideoMode::getDesktopMode().width)
+	{
+		m_alienSprite.setPosition(0 - Offset, m_alienSprite.getPosition().y);
+	}
+
+	//aline moving right of screen 
+	if (m_alienSprite.getPosition().x < 0 - Offset)
+	{
+		m_alienSprite.setPosition(sf::VideoMode::getDesktopMode().width, m_alienSprite.getPosition().y);
+	}
+
+	//aline moving top of screen 
+	if (m_alienSprite.getPosition().y < 0 - Offset)
+	{
+		m_alienSprite.setPosition(m_alienSprite.getPosition().x, sf::VideoMode::getDesktopMode().height);
+	}
+
+	//aline rmoving bottom of screen 
+	if (m_alienSprite.getPosition().y > sf::VideoMode::getDesktopMode().height)
+	{
+		m_alienSprite.setPosition(m_alienSprite.getPosition().x, 0 - Offset);
+	}
 }
 
 void Alien::setupSprites()

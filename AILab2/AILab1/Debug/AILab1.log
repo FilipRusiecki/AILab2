@@ -1,8 +1,4 @@
 ﻿  Game.cpp
-C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\Game.cpp(19,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\Game.cpp(76,70): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\Game.cpp(82,111): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\Game.cpp(114,68): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\Game.cpp(120,107): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\gameuser\Desktop\AILab2\AILab2\AILab1\Game.cpp(192,23): warning C4018: '<': signed/unsigned mismatch
-  AILab1.vcxproj -> C:\Users\gameuser\Desktop\AILab2\AILab2\Debug\AILab1.exe
+E:\AILab2\AILab2\AILab1\Game.cpp(16,23): warning C4018: '<': signed/unsigned mismatch
+E:\AILab2\AILab2\AILab1\Game.cpp(132,23): warning C4018: '<': signed/unsigned mismatch
+  AILab1.vcxproj -> E:\AILab2\AILab2\Debug\AILab1.exe

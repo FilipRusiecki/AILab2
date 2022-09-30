@@ -6,18 +6,29 @@ class Flee
 {
 
 public:
-	sf::Texture m_fleeTexture; // texture used for alien
-	sf::Sprite m_fleeSprite; // sprite used for alien
-
+	sf::Texture m_fleeTexture;
+	sf::Sprite m_fleeSprite; 
+	sf::CircleShape radius;
+	float radiusF = 500.0f;
 	void update(sf::Time& t_deltaTime, Player& t_player);
 	void render(sf::RenderWindow& t_window);
 	Flee();
-
-
+	bool alive = false;
+	bool tracerAlive = false;
 private:
+	float angle = 0.0f;
+	float pi = 3.141592653589793238f;
 	float speed = 2.0f;
+	float maxSpeed = 1.0f;
+	float distance;
+	float timeToTarget = 0.25f;
+	float GetProperRot;
+	float rotation;
+	int offSetOffScreen = 16;
+	sf::Vector2f distanceVec;
+	sf::Vector2f vel;
 	void setupSprites();
 	void flee(sf::Time& t_deltaTime, Player& t_player);
-	sf::Vector2f vel;
+	void boundry();
 
 };

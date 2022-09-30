@@ -8,13 +8,22 @@ Seek::Seek()
 
 void Seek::update(sf::Time& t_deltaTime, Player& t_player)
 {
-	seek(t_deltaTime, t_player);
+	if (alive == true)
+	{
+		seek(t_deltaTime, t_player);
+	}
 }
 
 void Seek::render(sf::RenderWindow& t_window)
 {
-	t_window.draw(LineToPlayer);
-	t_window.draw(m_seekSprite);
+	if (alive == true)
+	{
+		if (tracerAlive == true)
+		{
+			t_window.draw(LineToPlayer);
+		}
+		t_window.draw(m_seekSprite);
+	}
 }
 
 

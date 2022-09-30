@@ -14,8 +14,11 @@ public:
 	sf::VertexArray WanderLine{ sf::Lines };
 	sf::Vector2f linePoint;
 	Alien();
-	void kinematicWander(sf::Time& t_deltaTime);
+	bool alive = false;
+	bool tracerAlive = false;
 private:
+	void kinematicWander(sf::Time& t_deltaTime);
+	int Offset = 16;
 	float angleInRads = 0;
 	float angle = 0.0f;
 	float pi = 3.141592653589793238f;
@@ -25,5 +28,6 @@ private:
 	int randomInt = 0;
 	void setupSprites();
 	void randomNum();
+	void boundry();
 };
 

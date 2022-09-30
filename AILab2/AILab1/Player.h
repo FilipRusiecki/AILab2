@@ -19,8 +19,10 @@ public:
 	Player();
 	void update(sf::Time& t_deltaTime);
 	void reder(sf::RenderWindow& t_window);
+	bool tracerAlive = false;
 
 private:
+	int playerOffset = 16;
 	float angleInRads=0;
 	sf::Vector2f vel;
 	sf::Vector2f vel2;
@@ -28,12 +30,12 @@ private:
 	float speed = 0.0f;
 	float maxSpeedFront = 8.0f;
 	float maxSpeedReverse = -8.0f;
+	float GetProperRot;
 	float rotation = 90;
 	bool turnLeft = false;
 	bool turnRight = false;
-	void changeDirection();
 	void setupSprites();
 	void playerMovement(sf::Time& t_deltaTime);
-
+	void boundry();
 };
 

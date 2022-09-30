@@ -32,14 +32,31 @@ void npc::npcMovement()
 
 }
 
+void npc::boundry()
+{
+	//npc moving top of screen 
+	if (m_npcSprite.getPosition().y > sf::VideoMode::getDesktopMode().height)
+	{
+		m_npcSprite.setPosition(m_npcSprite.getPosition().x, 0 - 16);
+	}
+
+}
+
 void npc::reder(sf::RenderWindow& t_window)
 {
-	t_window.draw(m_npcSprite);
+	if (alive == true)
+	{
+		t_window.draw(m_npcSprite);
+	}
 }
 
 
 void npc::update()
 {
-	npcMovement();
+	if (alive == true)
+	{
+		npcMovement();
+		boundry();
+	}
 }
 

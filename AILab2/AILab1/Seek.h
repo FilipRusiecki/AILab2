@@ -12,6 +12,8 @@ class Seek
 		void update(sf::Time& t_deltaTime, Player& t_player);
 		void render(sf::RenderWindow& t_window);
 		Seek();
+		bool alive = false;
+		bool tracerAlive = false;
 	private:
 		float angle = 0.0f;
 		float pi = 3.141592653589793238f;

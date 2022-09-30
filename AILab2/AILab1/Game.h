@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "npc.h"
 #include "Alien.h"
-#include "Arrive.h"
+
 #include "Seek.h"
 #include "Flee.h"
 #include <SFML/Graphics.hpp>
@@ -18,10 +18,8 @@ public:
 	Player myPlayer;
 	npc myNpc;
 	Alien myAlien;
-	Arrive myArrive;
 	Seek mySeek;
 	Flee myFlee;
-	void checkForOffScreen();
 private:
 	int npcCount= 4; 
 	sf::Text nameTag[4];
